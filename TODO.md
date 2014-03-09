@@ -35,38 +35,6 @@ Provides outline/planning for risk-attack-sequence.
 
 ## Classes
 
-### *public class* Die
-
-#### variables
-
-* `faces` int
-    * number of faces on this Die
-* `value` int
-    * current rolled value of this Die
-
-#### constructors:
-
-* (f)
-    * `faces` = f
-    * `value` = 1
-        * *defaults to 1*
-
-#### methods
-
-**getters**
-
-* `getFaces` int
-    * returns `faces`
-* `getValue` int
-    * returns `value`
-
-**setters**
-
-* `rollDie` int
-    * rolls Die and returns its new `value`
-
----
-
 ### *public class* GameState
 
 #### variables
@@ -125,45 +93,6 @@ Provides outline/planning for risk-attack-sequence.
     * removes given Player from `activePlayers`
 * `removePlayer` void
     * removes given Player from `players`
-
----
-
-### *public class* Player
-
-#### variables
-
-* `cards` ArrayList<Card>
-    * Cards that this Player holds
-* `occTerritories` int
-    * number of Territories this Player is occupying
-
-#### constructors
-
-* (c, o)
-    * `cards` = c
-    * `occTerritories` = o
-
-#### methods
-
-**getters**
-
-* `getCards` ArrayList<Card>
-    * returns `cards`
-* `getOccTerritories` int
-    * returns `occTerritories`
-* `isEliminated` bool
-    * checks if this Player has been eliminated from the game
-
-**setters**
-
-* `addCard` void
-    * adds given Card to `cards`
-* `addTerritory` void
-    * increments number of occupied Territories
-* `removeCards` void
-    * removes given Cards from `cards`
-* `removeTerritory` void
-    * decrements number of occupied Territories
 
 ---
 
