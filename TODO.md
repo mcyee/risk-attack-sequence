@@ -39,36 +39,42 @@ Provides outline/planning for risk-attack-sequence.
 
 #### variables
 
-* **name** String
+* `name` String
     * name of this Card
-* **stars** int
+* `stars` int
     * number of stars on this Card, max 2
-* **territory** String
+* `territory` String
     * Territory depicted on this Card
-* **unit** String
+* `unit` String
     * type of unit depicted on this Card (one of soldier, cavalry, artillery)
 
 #### constructors
 
-#### methods
+* (n, s)
+    * `name` = n
+    * `stars` = s
 
-##### getters
-
-##### setters
-
----
-
-### *public class* Continent
-
-#### variables
-
-#### constructors
+* (n, t, u)
+    * `name` = n
+    * `territory` = t
+    * `unit` = u
 
 #### methods
 
-##### getters
+**getters**
 
-##### setters
+* `getName` String
+    * returns `name`
+* `getStars` int
+    * returns `stars`
+* `getTerritory` String
+    * returns `territory`
+* `getUnit` String
+    * returns `unit`
+
+**setters**
+
+* none
 
 ---
 
@@ -76,113 +82,175 @@ Provides outline/planning for risk-attack-sequence.
 
 #### variables
 
-* **faces** int
+* `faces` int
     * number of faces on this Die
-* **value** int
+* `value` int
     * current rolled value of this Die
 
 #### constructors:
 
 * (f)
-    * **faces** = f
-    * **value** = 1
+    * `faces` = f
+    * `value` = 1
         * *defaults to 1*
 
 #### methods
 
-##### getters
-* **getFaces** int
-    * returns number of faces on this Die
-* **getValue** int
-    * returns the current rolled value of this Die
+**getters**
 
-##### setters
-* **rollDie** int
-    * rolls this Die and returns its new rolled value
+* `getFaces` int
+    * returns `faces`
+* `getValue` int
+    * returns `value`
+
+**setters**
+
+* `rollDie` int
+    * rolls Die and returns its new `value`
+
+---
+
+### *public class* GameState
+
+#### variables
+
+* `AFRICA` const int
+    * 0
+* `ASIA` const int
+    * 1
+* `AUSTRALIA` const int
+    * 2
+* `EUROPE` const int
+    * 3
+* `NORTH_AMERICA` const int
+    * 4
+* `SOUTH_AMERICA` const int
+    * 5
+
+* `activePlayers` ArrayList<Player>
+    * Players still in the game
+* `continentBonus` int[]
+    * bonus from occupying continents, index is given continent
+* `continents` ArrayList<ArrayList<Territory>>
+    * Territories in each continent, index is given continent
+* `players` ArrayList<Player>
+    * Players in the game
+
+#### constructors
+
+* (ap, cb, c, p, t)
+    * `activePlayers` = ap
+    * `continentBonus` = cb
+    * `continents` = c
+    * `players` = p
+
+#### methods
+
+**getters**
+
+* `getActivePlayers` ArrayList<Player>
+    * returns `activePlayers`
+* `getContinentBonus` int
+    * returns bonus awarded for given continent
+* `getContinents` ArrayList<ArrayList<Territory>>
+    * returns `continents`
+* `getContinentOcc` String
+    * returns name of Player who owns given continent
+* `getPlayers` ArrayList<Player>
+    * returns `players`
+
+**setters**
+
+* `addActivePlayer` void
+    * adds given Player to `activePlayers`
+* `addPlayer` void
+    * adds given Player to `players`
+* `removeActivePlayer` void
+    * removes given Player from `activePlayers`
+* `removePlayer` void
+    * removes given Player from `players`
 
 ---
 
 ### *public class* Player
 
 #### variables
-* **bonusArmies** int
-    * number of bonus Armies this Player holds from Continents occupied
-* **cards** Card[]
+
+* `cards` Card[]
     * Cards that this Player holds
-* **occContinents** Continent[]
-    * Continents that this Player is currently occupying
-* **occTerritories** Territory[]
-    * Territories that this Player is currently occupying
+* `occTerritories` int
+    * number of Territories this Player is occupying
 
 #### constructors
-* (b, c, n, o)
-    * **bonusArmies** = b
-    * **cards** = c
-    * **occContinents** = n
-    * **occTerritories** = o
+
+* (c, o)
+    * `cards` = c
+    * `occTerritories` = o
 
 #### methods
 
-##### getters
-* **getBonusArmies** int
-    * returns number of bonus armies earned from Continent occupancy
-* **getCards** Card[]
-    * returns array of Cards that this Player holds
-* **getOccContinents** Continent[]
-    * returns array of Continents this Player occupies
-* **getOccTerritories** Territory[]
-    * returns array of Territories that this Player occupies
+**getters**
 
-##### setters
-* **addArmies** void
-    * adds given number of armies to bonusArmies
-* **addCard** void
-    * adds given Card to this Player's array of Cards
-* **addContinent**
-* **removeArmies** void
-    * removes given number of armies from bonusArmies
-    * cannot result in negative integer
-* **removeCards** void
-    * removes given Cards from this Player's array of Cards
+* `getCards` Card[]
+    * returns `cards`
+* `getOccTerritories` int
+    * returns `occTerritories`
+* `isEliminated` bool
+    * checks if this Player has been eliminated from the game
+
+**setters**
+
+* `addCard` void
+    * adds given Card to `cards`
+* `addTerritory` void
+    * increments number of occupied Territories
+* `removeCards` void
+    * removes given Cards from `cards`
+* `removeTerritory` void
+    * decrements number of occupied Territories
 
 ---
 
 ### *public class* Territory
 
 #### variables
-* **adjacent** String[]
-    * adjacent Territories
-* **armies** int
+
+* `adjacent` String[]
+    * adjacent Territories that can be attacked/defended from
+* `armies` int
     * number of armies occupying this Territory
-* **name** String
+* `name` String
     * name of this Territory
-* **occPlayer** String
+* `occPlayer` String
         * currently occupying Player
 
 #### constructors
+
 * (t, a, n, o)
-    * **adjacent** = t
-    * **armies** = a
-    * **name** = n
-    * **occPlayer** = o
+    * `adjacent` = t
+    * `armies` = a
+    * `name` = n
+    * `occPlayer` = o
 
 #### methods
 
-##### getters
-* **getAdjacent** String[]
-    * returns array of adjacent Territories
-* **getArmies** int
-    * returns number of armies occupying this Territory
-* **getName** String
-    * returns name of this Territory
-* **getOccPlayer** String
-    * returns currently occupying Player of this Territory
-        
-##### setters
-* **attack** int[]
+**getters**
+
+* `getAdjacent` String[]
+    * returns `adjacent`
+* `getArmies` int
+    * returns `armies`
+* `getName` String
+    * returns `name`
+* `getOccPlayer` String
+    * returns `occPlayer`
+
+**setters**
+
+* `attack` int[]
     * attacks given Territory from this Territory with given number of armies
     * returns array of sorted Dice values
-* **changeArmies** void
+* `changeArmies` void
     * updates number of armies occupying this Territory
-* **changeOccPlayer** void
+* `changeOccPlayer` void
     * updates currently occupying Player of this Territory
