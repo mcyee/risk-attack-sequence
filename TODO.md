@@ -35,49 +35,6 @@ Provides outline/planning for risk-attack-sequence.
 
 ## Classes
 
-### *public class* Card
-
-#### variables
-
-* `name` String
-    * name of this Card
-* `stars` int
-    * number of stars on this Card, max 2
-* `territory` String
-    * Territory depicted on this Card
-* `unit` String
-    * type of unit depicted on this Card (one of soldier, cavalry, artillery)
-
-#### constructors
-
-* (n, s)
-    * `name` = n
-    * `stars` = s
-
-* (n, t, u)
-    * `name` = n
-    * `territory` = t
-    * `unit` = u
-
-#### methods
-
-**getters**
-
-* `getName` String
-    * returns `name`
-* `getStars` int
-    * returns `stars`
-* `getTerritory` String
-    * returns `territory`
-* `getUnit` String
-    * returns `unit`
-
-**setters**
-
-* none
-
----
-
 ### *public class* Die
 
 #### variables
@@ -126,7 +83,6 @@ Provides outline/planning for risk-attack-sequence.
     * 4
 * `SOUTH_AMERICA` const int
     * 5
-
 * `activePlayers` ArrayList<Player>
     * Players still in the game
 * `continentBonus` int[]
@@ -176,7 +132,7 @@ Provides outline/planning for risk-attack-sequence.
 
 #### variables
 
-* `cards` Card[]
+* `cards` ArrayList<Card>
     * Cards that this Player holds
 * `occTerritories` int
     * number of Territories this Player is occupying
@@ -191,7 +147,7 @@ Provides outline/planning for risk-attack-sequence.
 
 **getters**
 
-* `getCards` Card[]
+* `getCards` ArrayList<Card>
     * returns `cards`
 * `getOccTerritories` int
     * returns `occTerritories`
@@ -215,7 +171,7 @@ Provides outline/planning for risk-attack-sequence.
 
 #### variables
 
-* `adjacent` String[]
+* `adjacent` ArrayList<String>
     * adjacent Territories that can be attacked/defended from
 * `armies` int
     * number of armies occupying this Territory
@@ -236,7 +192,7 @@ Provides outline/planning for risk-attack-sequence.
 
 **getters**
 
-* `getAdjacent` String[]
+* `getAdjacent` ArrayList<String>
     * returns `adjacent`
 * `getArmies` int
     * returns `armies`
@@ -247,10 +203,15 @@ Provides outline/planning for risk-attack-sequence.
 
 **setters**
 
+* `addArmies` void
+    * increases number of armies occupying this Territory by given number
 * `attack` int[]
     * attacks given Territory from this Territory with given number of armies
     * returns array of sorted Dice values
-* `changeArmies` void
-    * updates number of armies occupying this Territory
 * `changeOccPlayer` void
     * updates currently occupying Player of this Territory
+* `defend` int[]
+    * defends this Territory with given number of armies
+    * returns array of sorted Dice values
+* `removeArmies` void
+    * decreases number of armies occupying this Territory by given number
