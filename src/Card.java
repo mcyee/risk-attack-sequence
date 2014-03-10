@@ -48,7 +48,7 @@ public class Card
      */
     String getName()
     {
-        return this.name;
+        return name;
     }
     
     /**
@@ -58,7 +58,7 @@ public class Card
      */
     int getStars()
     {
-        return this.stars;
+        return stars;
     }
     
     /**
@@ -68,7 +68,7 @@ public class Card
      */
     String getTerritory()
     {
-        return this.territory;
+        return territory;
     }
     
     /**
@@ -78,7 +78,7 @@ public class Card
      */
     String getUnit()
     {
-        return this.unit;
+        return unit;
     }
 
 }

@@ -20,20 +20,20 @@ public class Die
     
     
     //--CONSTRUCTORS------------------------------------------------------------
-    
-    // 6-faced Die
-    public Die()
-    {
-        faces = 6;
-        value = 1; // default value
-    }
-    
+
     // `f`-faced Die
     public Die(int f)
     {
         faces = f;
         value = 1; // default value
     }
+    
+    // 6-faced Die
+    public Die()
+    {
+        this(6);
+    }
+    
 
     //--METHODS-----------------------------------------------------------------
     
@@ -46,7 +46,7 @@ public class Die
      */
     int getFaces()
     {
-        return this.faces;
+        return faces;
     }
     
     /**
@@ -56,7 +56,7 @@ public class Die
      */
     int getValue()
     {
-        return this.value;
+        return value;
     }
     
     

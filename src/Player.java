@@ -11,6 +11,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player
 {
@@ -38,9 +39,9 @@ public class Player
      * PRE: true
      * POST: returns `cards`
      */
-    ArrayList<Card> getCards()
+    List<Card> getCards()
     {
-        return this.cards;
+        return cards;
     }
     
     /**
@@ -50,7 +51,7 @@ public class Player
      */
     int getOccTerritories()
     {
-        return this.occTerritories;
+        return occTerritories;
     }
     
     /**
@@ -60,7 +61,7 @@ public class Player
      */
     Boolean isEliminated()
     {
-        if (this.occTerritories <= 0)
+        if (occTerritories <= 0)
         {
             return true;
         }
@@ -78,7 +79,7 @@ public class Player
      */
     void addCard(Card c)
     {
-        this.cards.add(c);
+        cards.add(c);
     }
     
     /**
@@ -88,7 +89,7 @@ public class Player
      */
     void addTerritory()
     {
-        this.occTerritories++;
+        occTerritories++;
     }
     
     /**
@@ -96,13 +97,13 @@ public class Player
      * PRE: true
      * POST: each Card in c is removed from `cards`
      */
-    void removeCards(ArrayList<Card> c)
+    void removeCards(List<Card> c)
     {
         if (!c.isEmpty())
         {
             for (Card item : c)
             {
-                this.cards.remove(item);
+                cards.remove(item);
             }
         }
     }
@@ -114,7 +115,7 @@ public class Player
      */
     void removeTerritory()
     {
-        this.occTerritories--;
+        occTerritories--;
     }
     
 
