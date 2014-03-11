@@ -37,47 +37,6 @@ Provides outline/planning for risk-attack-sequence.
 
 ### *public class* GameState
 
-#### variables
-
-* `AFRICA` const int
-    * 0
-* `ASIA` const int
-    * 1
-* `AUSTRALIA` const int
-    * 2
-* `EUROPE` const int
-    * 3
-* `NORTH_AMERICA` const int
-    * 4
-* `SOUTH_AMERICA` const int
-    * 5
-* `activePlayers` ArrayList<Player>
-    * Players still in the game
-* `continentBonus` int[]
-    * bonus from occupying continents, index is given continent
-* `continents` ArrayList<ArrayList<Territory>>
-    * Territories in each continent, index is given continent
-* `players` ArrayList<Player>
-    * Players in the game
-
-#### constructors
-
-* (ap, cb, c, p, t)
-    * `activePlayers` = ap
-    * `continentBonus` = cb
-    * `continents` = c
-    * `players` = p
-
-#### methods
-
-**getters**
-
-* `getActivePlayers` ArrayList<Player>
-    * returns `activePlayers`
-* `getContinentBonus` int
-    * returns bonus awarded for given continent
-* `getContinents` ArrayList<ArrayList<Territory>>
-    * returns `continents`
 * `getContinentOcc` String
     * returns name of Player who owns given continent
 * `getPlayers` ArrayList<Player>
@@ -98,37 +57,7 @@ Provides outline/planning for risk-attack-sequence.
 
 ### *public class* Territory
 
-#### variables
-
-* `adjacent` ArrayList<String>
-    * adjacent Territories that can be attacked/defended from
-* `armies` int
-    * number of armies occupying this Territory
-* `name` String
-    * name of this Territory
-* `occPlayer` String
-        * currently occupying Player
-
-#### constructors
-
-* (t, a, n, o)
-    * `adjacent` = t
-    * `armies` = a
-    * `name` = n
-    * `occPlayer` = o
-
 #### methods
-
-**getters**
-
-* `getAdjacent` ArrayList<String>
-    * returns `adjacent`
-* `getArmies` int
-    * returns `armies`
-* `getName` String
-    * returns `name`
-* `getOccPlayer` String
-    * returns `occPlayer`
 
 **setters**
 
