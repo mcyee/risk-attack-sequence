@@ -66,6 +66,7 @@ Provides outline/planning for risk-attack-sequence.
 * `attack` int[]
     * attacks given Territory from this Territory with given number of armies
     * returns array of sorted Dice values
+    * change to do full attack comparison
 * `changeOccPlayer` void
     * updates currently occupying Player of this Territory
 * `defend` int[]

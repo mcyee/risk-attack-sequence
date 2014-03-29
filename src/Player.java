@@ -61,12 +61,7 @@ public class Player
      */
     Boolean isEliminated()
     {
-        if (occTerritories <= 0)
-        {
-            return true;
-        }
-        
-        return false;
+        return occTerritories <= 0;
     }
     
     

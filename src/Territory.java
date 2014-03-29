@@ -105,5 +105,22 @@ public class Territory
         
         return diceRolls;
     }
+    
+    /**
+     * changeOccPlayer(p) changes the occupying Player of the Territory to `p`
+     * PRE: `p` is name of Player in `activePlayers`
+     * POST: changes occupying Player name to `p`
+     */
+    void changeOccPlayer(String p)
+    {
+        occPlayer = p;
+    }
+    
+    /**
+     * defend(d) defends this Territory with `d` armies
+     * PRE: 0 < d <= 2, d < armies
+     * POST: returns array of sorted Dice values
+     */
+    
 
 }

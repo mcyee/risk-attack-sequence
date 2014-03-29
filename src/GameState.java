@@ -24,14 +24,14 @@ public class GameState
     private final int           NORTH_AMERICA = 4;
     private final int           SOUTH_AMERICA = 5;
     
-    private List<Player>   activePlayers;  // Players still in the game
+    private List<Player>        activePlayers;  // Players still in the game
     private int[]               continentBonus; // bonus from occupying
                                                 // continents, index is given
                                                 // continent
     private List<List<Territory>> continents;
                                                 // Territories in each continent
                                                 // index is given continent
-    private List<Player>   players;        // Players in the game
+    private List<Player>        players;        // Players in the game
     
     
     //--CONSTRUCTORS------------------------------------------------------------
