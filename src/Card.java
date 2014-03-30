@@ -5,7 +5,7 @@
  * Author: Ming-Cee Yee
  *
  * Date Created: 2014-03-09
- * Last Modified: 2014-03-09
+ * Last Modified: 2014-03-29
  * Description: Risk cards that can be traded in for more armies
  */
 
@@ -46,7 +46,7 @@ public class Card
      * PRE: true
      * POST: returns `name`
      */
-    String getName()
+    public String getName()
     {
         return name;
     }
@@ -56,7 +56,7 @@ public class Card
      * PRE: true
      * POST: returns `stars`
      */
-    int getStars()
+    public int getStars()
     {
         return stars;
     }
@@ -66,7 +66,7 @@ public class Card
      * PRE: true
      * POST: returns `territory`
      */
-    String getTerritory()
+    public String getTerritory()
     {
         return territory;
     }
@@ -76,7 +76,7 @@ public class Card
      * PRE: true
      * POST: returns `unit`
      */
-    String getUnit()
+    public String getUnit()
     {
         return unit;
     }
