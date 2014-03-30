@@ -5,7 +5,7 @@
  * Author: Ming-Cee Yee
  *
  * Date Created: 2014-03-07
- * Last Modified: 2014-03-09
+ * Last Modified: 2014-03-29
  * Description: Player class, includes information about Cards held and
  *              Territories occupied.
  */
@@ -39,7 +39,7 @@ public class Player
      * PRE: true
      * POST: returns `cards`
      */
-    List<Card> getCards()
+    public List<Card> getCards()
     {
         return cards;
     }
@@ -49,7 +49,7 @@ public class Player
      * PRE: true
      * POST: returns `occTerritories`
      */
-    int getOccTerritories()
+    public int getOccTerritories()
     {
         return occTerritories;
     }
@@ -59,7 +59,7 @@ public class Player
      * PRE: true
      * POST: returns true if eliminated, false otherwise
      */
-    Boolean isEliminated()
+    public Boolean isEliminated()
     {
         return occTerritories <= 0;
     }
@@ -72,7 +72,7 @@ public class Player
      * PRE: true
      * POST: `cards` includes `c`
      */
-    void addCard(Card c)
+    public void addCard(Card c)
     {
         cards.add(c);
     }
@@ -82,7 +82,7 @@ public class Player
      * PRE: true
      * POST: adds 1 to number of occupied Territories
      */
-    void addTerritory()
+    public void addTerritory()
     {
         occTerritories++;
     }
@@ -92,7 +92,7 @@ public class Player
      * PRE: true
      * POST: each Card in c is removed from `cards`
      */
-    void removeCards(List<Card> c)
+    public void removeCards(List<Card> c)
     {
         if (!c.isEmpty())
         {
@@ -108,7 +108,7 @@ public class Player
      * PRE: true
      * POST: subtracts 1 from number of occupied Territories
      */
-    void removeTerritory()
+    public void removeTerritory()
     {
         occTerritories--;
     }

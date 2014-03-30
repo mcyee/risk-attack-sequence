@@ -5,7 +5,7 @@
  * Author: Ming-Cee Yee
  *
  * Date Created: 2014-03-10
- * Last Modified: 2014-03-11
+ * Last Modified: 2014-03-29
  * Description: Stores the state of the game: continents, active players,
  *              all players, association of territories to continents, and
  *              bonus amounts for occupying continents. 
@@ -17,12 +17,12 @@ public class GameState
 {
     //--VARIABLES---------------------------------------------------------------
     
-    private final int           AFRICA = 0;
-    private final int           ASIA = 1;
-    private final int           AUSTRALIA = 2;
-    private final int           EUROPE = 3;
-    private final int           NORTH_AMERICA = 4;
-    private final int           SOUTH_AMERICA = 5;
+    public final int           AFRICA = 0;
+    public final int           ASIA = 1;
+    public final int           AUSTRALIA = 2;
+    public final int           EUROPE = 3;
+    public final int           NORTH_AMERICA = 4;
+    public final int           SOUTH_AMERICA = 5;
     
     private List<Player>        activePlayers;  // Players still in the game
     private int[]               continentBonus; // bonus from occupying
@@ -50,11 +50,16 @@ public class GameState
     //--getters--
     
     /**
+     * findPlayer(p) returns the Player whose name is `p`
+     * PRE: `p` is name of a Player
+     */
+    
+    /**
      * getActivePlayers() returns the list of players still in the game
      * PRE: true
      * POST: returns `activePlayers`
      */
-    List<Player> getActivePlayers()
+    public List<Player> getActivePlayers()
     {
         return activePlayers;
     }
@@ -64,7 +69,7 @@ public class GameState
      * PRE: true
      * POST: returns bonus awarded for given continent
      */
-    int getContinentBonus(int c)
+    public int getContinentBonus(int c)
     {
         return continentBonus[c];
     }
@@ -75,7 +80,7 @@ public class GameState
      * PRE: true
      * POST: returns list of continents and associated Territories
      */
-    List<List<Territory>> getContinents()
+    public List<List<Territory>> getContinents()
     {
         return continents;
     }
@@ -83,20 +88,75 @@ public class GameState
     /**
      * getContinentOcc(c) returns the name of the Player who is occupying `c`
      * PRE: true
-     * POST: returns name of Player occupying `c`
+     * POST: returns name of Player occupying `c` or "no one" if not occupied
      */
-    String getContinentOcc(int c)
+    public String getContinentOcc(int c)
     {
         List<Territory> cont = continents.get(c); // list of Territories in `c`
         String nm = cont.get(0).getOccPlayer();   // name of first Territory's
                                                   // occupying Player
         
-        for (t : cont)
+        for (Territory t : cont)
         {
-            
+            if (!nm.equals(t.getName()))
+            {
+                return "no one";
+            }
         }
+        
+        return nm;
+    }
+    
+    /**
+     * getPlayers() returns the list of Players in the game
+     * PRE: true
+     * POST: returns `players`
+     */
+    public List<Player> getPlayers()
+    {
+        return players;
     }
     
     //--setters--
+    
+    /**
+     * addActivePlayer(p) adds p to list of active Players
+     * PRE: true
+     * POST: p is added to `activePlayers`
+     */
+    public void addActivePlayer(Player p)
+    {
+        activePlayers.add(p);
+    }
+    
+    /**
+     * addPlayer(p) adds p to list of Players
+     * PRE: true
+     * POST: p is added to `players`
+     */
+    public void addPlayer(Player p)
+    {
+        players.add(p);
+    }
+    
+    /**
+     * removeActivePlayer(p) removes p from list of active Players
+     * PRE: true
+     * POST: p is removed from `activePlayers`
+     */
+    public void removeActivePlayer(Player p)
+    {
+        activePlayers.remove(p);
+    }
+    
+    /**
+     * removePlayer(p) removes p from list of Players
+     * PRE: true
+     * POST: p is removed from `players`
+     */
+    public void removePlayer(Player p)
+    {
+        players.remove(p);
+    }
 
 }
