@@ -1,13 +1,10 @@
 /**
- * Project: RiskAttackSequence
- * File: Die.java
- *
  * Author: Ming-Cee Yee
- *
  * Date Created: 2014-03-09
- * Last Modified: 2014-03-29
  * Description: Provides Dice to roll.
  */
+
+package com.skysketches.RiskAttackSequence;
 
 import java.util.Random;
 

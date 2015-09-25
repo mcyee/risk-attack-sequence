@@ -1,13 +1,10 @@
 /**
- * Project: RiskAttackSequence
- * File: Territory.java
- *
  * Author: Ming-Cee Yee
- *
  * Date Created: 2014-03-11
- * Last Modified: 2014-03-29
  * Description: Territories on the Risk map.
  */
+
+package com.skysketches.RiskAttackSequence;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,12 +16,11 @@ import java.util.List;
 public class Territory
 {
     //--VARIABLES---------------------------------------------------------------
-    
-    private ArrayList<String> adjacent;  // adjacent Territories that can be
-                                         // attacked or defended from
-    private int          armies;         // number of armies currently occupying
-    private String       name;           // name of this Territory
-    private String       occPlayer;      // currently occupying Player
+
+    private final String name; // name of this Territory
+    private final ArrayList<String> adjacent; // adjacent Territories
+    private int armies; // number of occupying armies
+    private String occPlayer; // currently occupying Player
     
     //--CONSTRUCTORS------------------------------------------------------------
     
@@ -42,42 +38,30 @@ public class Territory
     
     /**
      * getAdjacent() returns the list of adjacent Territories
-     * PRE: true
-     * POST: returns list of adjacent Territories
      */
-    public List<String> getAdjacent()
-    {
-        return adjacent;
+    public List<String> getAdjacent() {
+        return this.adjacent;
     }
     
     /**
      * getArmies() returns the number of armies occupying the Territory
-     * PRE: true
-     * POST: returns number of armies occupying Territory
      */
-    public int getArmies()
-    {
-        return armies;
+    public int getArmies() {
+        return this.armies;
     }
     
     /**
      * getName() returns the name of the Territory
-     * PRE: true
-     * POST: returns name of Territory
      */
-    public String getName()
-    {
-        return name;
+    public String getName() {
+        return this.name;
     }
     
     /**
      * getOccPlayer() returns the name of the occupying Player
-     * PRE: true
-     * POST: returns name of occupying Player
      */
-    public String getOccPlayer()
-    {
-        return occPlayer;
+    public String getOccPlayer() {
+        return this.occPlayer;
     }
     
     //-setters--
@@ -85,33 +69,29 @@ public class Territory
     /**
      * addArmies(n) adds `n` more occupying armies to the Territory
      * PRE: n >= 0
-     * POST: adds `n` more armies
      */
-    public void addArmies(int n)
-    {
+    public void addArmies(int n) {
+    	// TODO create guard for n
         armies += n;
     }
     
     /**
-     * isValidDice(n, max, armies) checks if `n` is a valid number of dice to
-     *            roll given `max` number of dice and `armies` of Territory
+     * isValidDice(n, max, armies) returns true if `n` is a valid number of dice
+     * to roll given `max` number of dice and `armies` of Territory
      * PRE: `max` == 2 or `max` == 3, `armies` > 0
-     * POST: returns true if n is valid, false otherwise
      */
-    private static Boolean isValidDice(int n, int max, int armies)
-    {
+    private static Boolean isValidDice(int n, int max, int armies) {
+    	// TODO write guard for args
         return ((n > 0) && (n <= max) && (n < armies));
     }
     
     /**
      * promptDice(t, attack) prompts the Player for number of dice to roll
-     *           if attack == true, Player is attacking, defending otherwise
-     * PRE: true
+     * if attack == true, Player is attacking, defending otherwise
      * POST: prompts Player for number of dice to roll until valid number
      *       is provided
      */
-    private static int promptDice(Territory t, Boolean attack)
-    {
+    private static int promptDice(Territory t, Boolean attack) {
         InputStreamReader stream = new InputStreamReader(System.in);
         BufferedReader    reader = new BufferedReader(stream);
         Boolean     b = true;   // loop control
@@ -121,60 +101,49 @@ public class Territory
         String      player = t.getOccPlayer();
         int         max;        // 3 or 2
         
-        if (attack)
-        {
+        if (attack) {
             action = "attack";
             max = 3;
         }
-        else
-        {
+        else {
             action = "defend";
             max = 2;
         }
         
         // attacker must have more than one army in territory to attack
-        if (t.getArmies() <= 1 && attack)
-        {
+        if (t.getArmies() <= 1 && attack) {
             System.out.println("Sorry, you do not have enough armies to attack.");
         }
-        else
-        {
-            do
-            {
+        else {
+            do {
                 System.out.println(player + ", how many armies to "
                         + action + " with? : ");
                 String str;
                 
                 // Take user input `str`
-                try
-                {
+                try {
                     str = reader.readLine();
                 }
-                catch (IOException e1)
-                {
+                catch (IOException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                     continue;
                 }
                 
                 // Check if `str` is valid number of armies
-                try
-                {
+                try {
                     dice = Integer.valueOf(str);
                 }
-                catch (NumberFormatException e)
-                {
+                catch (NumberFormatException e) {
                     System.out.println("That's not an integer. Please try again.\n");
                     continue;
                 }
                 
-                if (!isValidDice(dice, max, t.getArmies()))
-                {
+                if (!isValidDice(dice, max, t.getArmies())) {
                     System.out.println("That's not a valid number."
                             + " Please try again.\n");
                 }
-                else
-                {
+                else {
                     b = false;
                 }
             } while (b);
@@ -185,11 +154,8 @@ public class Territory
     
     /**
      * attack(t) attacks `t` from the Territory
-     * PRE: true
-     * POST: attack is performed on t  
      */
-    public void attack(Territory t)
-    {
+    public void attack(Territory t) {
         // prompt for user input: number of dice to roll
         int attackDice = promptDice(this, true);
         int defendDice = promptDice(t, false);
@@ -206,19 +172,15 @@ public class Territory
         
         // compare dice values
         int check;
-        if (aDice.length > dDice.length)
-        {
+        if (aDice.length > dDice.length) {
             check = dDice.length;
         }
-        else
-        {
+        else {
             check = aDice.length;
         }
         
-        for (int i = 0; i < check; i++)
-        {
-            if (aDice[i] > dDice[i])
-            {
+        for (int i = 0; i < check; i++) {
+            if (aDice[i] > dDice[i]) {
                 System.out.println(getOccPlayer() + " rolls a " + aDice[i]
                         + ", which is greater than " + t.getOccPlayer()
                         + "'s " + dDice[i] + ". " + getOccPlayer()
@@ -226,16 +188,13 @@ public class Territory
                 t.removeArmies(1);
                 defendDice--;
             }
-            else
-            {
+            else {
                 System.out.print(t.getOccPlayer() + " rolls a " + dDice[i]
                         + "which is ");
-                if (aDice[i] == dDice[i])
-                {
+                if (aDice[i] == dDice[i]) {
                     System.out.print("equal to ");
                 }
-                else
-                {
+                else {
                     System.out.print("greater than ");
                 }
                 
@@ -248,15 +207,13 @@ public class Territory
         }
         
         // change results of attack
-        if (t.getArmies() <= 0)
-        {
+        if (t.getArmies() <= 0) {
             System.out.println(getOccPlayer() + " has conquered "
                     + t.getName() + "!");
             t.changeOccPlayer(getOccPlayer());
             t.addArmies(attackDice);
         }
-        else // if (attackDice <= 0)
-        {
+        else { // if (attackDice <= 0)
             System.out.println(t.getOccPlayer() + " has successfully defended "
                     + t.getName() + " from " + getOccPlayer() + "!");
         }
@@ -265,23 +222,21 @@ public class Territory
     /**
      * changeOccPlayer(p) changes the occupying Player of the Territory to `p`
      * PRE: `p` is name of Player in `activePlayers`
-     * POST: changes occupying Player name to `p`
      */
-    public void changeOccPlayer(String p)
-    {
-        occPlayer = p;
+    public void changeOccPlayer(String p) {
+    	// TODO write guard for arg
+        this.occPlayer = p;
     }
     
     
     /**
      * removeArmies() decreases the number of armies occupying the Territory
-     *                by `n`
+     * by `n`
      * PRE: `armies` > 0
-     * POST: subtracts `n` from `armies`
      */
-    public void removeArmies(int n)
-    {
-        armies -= n;
+    public void removeArmies(int n) {
+    	// TODO write guard
+        this.armies -= n;
     }
 
 }

@@ -1,13 +1,10 @@
 /**
- * Project: RiskAttackSequence
- * File: Card.java
- *
  * Author: Ming-Cee Yee
- *
  * Date Created: 2014-03-09
- * Last Modified: 2014-03-29
  * Description: Risk cards that can be traded in for more armies
  */
+
+package com.skysketches.RiskAttackSequence;
 
 public class Card
 {
