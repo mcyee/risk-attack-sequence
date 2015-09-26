@@ -6,31 +6,28 @@
 
 package com.skysketches.RiskAttackSequence;
 
-public class Card
-{
+public class Card {
     //--VARIABLES---------------------------------------------------------------
 
-    private String  name;       // name of card
-    private int     stars;      // number of stars on card, max 2
-    private String  territory;  // Territory depicted on card
-    private String  unit;       // unit depicted on card (soldier/cavalry/artillery)
+    private String name; // name of card
+    private int stars; // number of stars on card, max 2
+    private String territory; // Territory depicted on card
+    private String unit; // unit depicted on card (soldier/cavalry/artillery)
     
     
     //--CONSTRUCTORS------------------------------------------------------------
     
     // Star-type Card
-    public Card(String n, int s)
-    {
-        name = n;
-        stars = s;
+    public Card(String n, int s) {
+        this.name = n;
+        this.stars = s;
     }
     
     // Territory-Unit-type Card
-    public Card(String n, String t, String u)
-    {
-        name = n;
-        territory = t;
-        unit = u;
+    public Card(String n, String t, String u) {
+        this.name = n;
+        this.territory = t;
+        this.unit = u;
     }
     
     
@@ -40,42 +37,30 @@ public class Card
     
     /**
      * getName() returns `name`
-     * PRE: true
-     * POST: returns `name`
      */
-    public String getName()
-    {
-        return name;
+    public String getName() {
+        return this.name;
     }
     
     /**
      * getStars() returns `stars`
-     * PRE: true
-     * POST: returns `stars`
      */
-    public int getStars()
-    {
-        return stars;
+    public int getStars() {
+        return this.stars;
     }
     
     /**
      * getTerritory() returns `territory`
-     * PRE: true
-     * POST: returns `territory`
      */
-    public String getTerritory()
-    {
-        return territory;
+    public String getTerritory() {
+        return this.territory;
     }
     
     /**
      * getUnit() returns `unit`
-     * PRE: true
-     * POST: returns `unit`
      */
-    public String getUnit()
-    {
-        return unit;
+    public String getUnit() {
+        return this.unit;
     }
 
 }

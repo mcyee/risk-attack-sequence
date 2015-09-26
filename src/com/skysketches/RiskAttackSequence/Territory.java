@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Territory
-{
+public class Territory {
     //--VARIABLES---------------------------------------------------------------
 
     private final String name; // name of this Territory
@@ -24,8 +23,7 @@ public class Territory
     
     //--CONSTRUCTORS------------------------------------------------------------
     
-    public Territory(ArrayList<String> t, int a, String n, String o)
-    {
+    public Territory(ArrayList<String> t, int a, String n, String o) {
         adjacent = t;
         armies = a;
         name = n;

@@ -27,22 +27,18 @@ public class GameState {
     	}
     }
     
-    private List<Player>        activePlayers;  // Players still in the game
-    private int[]               continentBonus; // bonus from occupying
-                                                // continents, index is given
-                                                // continent
-    private List<List<Territory>> continents;
-                                                // Territories in each continent
-                                                // index is given continent
-    private List<Player>        players;        // Players in the game
+    private List<Player> activePlayers;  // Players still in the game
+    private int[] continentBonus; // bonus from occupying continents, index is given continent
+    private List<List<Territory>> continents; // Territories in each continent
+    private List<Player> players; // Players in the game
     
     
     //--CONSTRUCTORS------------------------------------------------------------
     public GameState(List<Player> ap, int[] cb, List<List<Territory>> c, List<Player> p) {
-        activePlayers = ap;
-        continentBonus = cb;
-        continents = c;
-        players = p;
+        this.activePlayers = ap;
+        this.continentBonus = cb;
+        this.continents = c;
+        this.players = p;
     }
     
     
@@ -84,12 +80,11 @@ public class GameState {
      */
     public String getContinentOcc(int c) {
         List<Territory> cont = continents.get(c); // list of Territories in `c`
-        String nm = cont.get(0).getOccPlayer();   // name of first Territory's
-                                                  // occupying Player
+        String nm = cont.get(0).getOccPlayer(); // name of first Territory's
+                                                // occupying Player
         
         for (Territory t : cont) {
-            if (!nm.equals(t.getName()))
-            {
+            if (!nm.equals(t.getName())) {
                 return "no one";
             }
         }

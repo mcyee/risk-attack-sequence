@@ -8,27 +8,24 @@ package com.skysketches.RiskAttackSequence;
 
 import java.util.Random;
 
-public class Die
-{
+public class Die {
     //--VARIABLES---------------------------------------------------------------
     
-    private Random  rand;
-    private int     faces; // number of faces
-    private int     value; // current rolled value
+    private Random rand;
+    private int faces; // number of faces
+    private int value; // current rolled value
     
     
     //--CONSTRUCTORS------------------------------------------------------------
 
     // `f`-faced Die
-    public Die(int f)
-    {
-        faces = f;
-        value = 1; // default value
+    public Die(int f) {
+        this.faces = f;
+        this.value = 1; // default value
     }
     
     // 6-faced Die
-    public Die()
-    {
+    public Die() {
         this(6);
     }
     
@@ -39,22 +36,16 @@ public class Die
     
     /**
      * getFaces() returns `faces`
-     * PRE: true
-     * POST: returns `faces`
      */
-    public int getFaces()
-    {
-        return faces;
+    public int getFaces() {
+        return this.faces;
     }
     
     /**
      * getValue() returns `value`
-     * PRE: true
-     * POST: returns `value`
      */
-    public int getValue()
-    {
-        return value;
+    public int getValue() {
+        return this.value;
     }
     
     
@@ -62,12 +53,8 @@ public class Die
     
     /**
      * roll() rolls Die and returns the rolled value
-     * PRE: true
-     * POST: Die has new `value`
-     *       returns new `value`
      */
-    public int roll()
-    {
+    public int roll() {
         value = rand.nextInt(6) + 1;
         return value;
     }
@@ -75,15 +62,12 @@ public class Die
     /**
      * rollDice(d, n) rolls the Die `n` times and returns the rolled values
      * PRE: n > 0
-     * POST: Die has new `value`
-     *       returns array of `value`s
      */
-    public int[] rollDice(int n)
-    {
+    public int[] rollDice(int n) {
+    	// TODO write guard
         int[] a = new int[n];
         
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             a[i] = roll();
         }
         
