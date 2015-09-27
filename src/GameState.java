@@ -5,7 +5,7 @@
  * Author: Ming-Cee Yee
  *
  * Date Created: 2014-03-10
- * Last Modified: 2014-03-29
+ * Last Modified: 2014-04-06
  * Description: Stores the state of the game: continents, active players,
  *              all players, association of territories to continents, and
  *              bonus amounts for occupying continents. 
@@ -52,7 +52,21 @@ public class GameState
     /**
      * findPlayer(p) returns the Player whose name is `p`
      * PRE: `p` is name of a Player
+     * POST: returns the Player whose name is `p`
+     *       returns the first Player in `players` otherwise
      */
+    public Player findPlayer(String p)
+    {
+        for (Player pl : players)
+        {
+            if (pl.getName() == p)
+            {
+                return pl;
+            }
+        }
+        
+        return players.get(0);
+    }
     
     /**
      * getActivePlayers() returns the list of players still in the game

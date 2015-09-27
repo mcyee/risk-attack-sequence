@@ -5,7 +5,7 @@
  * Author: Ming-Cee Yee
  *
  * Date Created: 2014-03-11
- * Last Modified: 2014-03-29
+ * Last Modified: 2014-04-17
  * Description: Territories on the Risk map.
  */
 
@@ -95,6 +95,7 @@ public class Territory
     /**
      * isValidDice(n, max, armies) checks if `n` is a valid number of dice to
      *            roll given `max` number of dice and `armies` of Territory
+     *            helper for attack(t)
      * PRE: `max` == 2 or `max` == 3, `armies` > 0
      * POST: returns true if n is valid, false otherwise
      */
@@ -106,8 +107,10 @@ public class Territory
     /**
      * promptDice(t, attack) prompts the Player for number of dice to roll
      *           if attack == true, Player is attacking, defending otherwise
+     *           helper for attack(t)
      * PRE: true
-     * POST: prompts Player for number of dice to roll until valid number
+     * POST: returns the number of dice to roll
+     *       prompts Player for number of dice to roll until valid number
      *       is provided
      */
     private static int promptDice(Territory t, Boolean attack)
@@ -254,6 +257,7 @@ public class Territory
                     + t.getName() + "!");
             t.changeOccPlayer(getOccPlayer());
             t.addArmies(attackDice);
+            
         }
         else // if (attackDice <= 0)
         {

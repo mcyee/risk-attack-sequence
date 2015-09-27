@@ -5,7 +5,7 @@
  * Author: Ming-Cee Yee
  *
  * Date Created: 2014-03-07
- * Last Modified: 2014-03-29
+ * Last Modified: 2014-04-06
  * Description: Player class, includes information about Cards held and
  *              Territories occupied.
  */
@@ -18,14 +18,16 @@ public class Player
     //--VARIABLES---------------------------------------------------------------
     
     private ArrayList<Card> cards;          // Cards held
+    private String          name;           // name of Player
     private int             occTerritories; // number of Territories occupied
     
     
     //--CONSTRUCTORS-----------------------------------------------------------
     
-    public Player(ArrayList<Card> c, int o)
+    public Player(ArrayList<Card> c, String n, int o)
     {
         cards = c;
+        name = n;
         occTerritories = o;
     }
     
@@ -42,6 +44,16 @@ public class Player
     public List<Card> getCards()
     {
         return cards;
+    }
+    
+    /**
+     * getName() returns `name`
+     * PRE: true
+     * POST: returns `name`
+     */
+    String getName()
+    {
+        return name;
     }
     
     /**
