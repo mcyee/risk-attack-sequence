@@ -24,10 +24,10 @@ public class Territory {
     //--CONSTRUCTORS------------------------------------------------------------
     
     public Territory(ArrayList<String> t, int a, String n, String o) {
-        adjacent = t;
-        armies = a;
-        name = n;
-        occPlayer = o;
+        this.adjacent = t;
+        this.armies = a;
+        this.name = n;
+        this.occPlayer = o;
     }
     
     //--METHODS-----------------------------------------------------------------
@@ -70,7 +70,7 @@ public class Territory {
      */
     public void addArmies(int n) {
     	// TODO create guard for n
-        armies += n;
+        this.armies += n;
     }
     
     /**
@@ -86,18 +86,16 @@ public class Territory {
     /**
      * promptDice(t, attack) prompts the Player for number of dice to roll
      * if attack == true, Player is attacking, defending otherwise
-     * POST: prompts Player for number of dice to roll until valid number
-     *       is provided
      */
     private static int promptDice(Territory t, Boolean attack) {
         InputStreamReader stream = new InputStreamReader(System.in);
-        BufferedReader    reader = new BufferedReader(stream);
-        Boolean     b = true;   // loop control
+        BufferedReader  reader = new BufferedReader(stream);
+        Boolean loop = true; // loop control
         
-        String      action;     // "attack" or "defend"
-        int         dice = 0;   // prompted number
-        String      player = t.getOccPlayer();
-        int         max;        // 3 or 2
+        String action; // "attack" or "defend"
+        int dice = 0; // prompted number
+        String player = t.getOccPlayer();
+        int max; // 3 or 2
         
         if (attack) {
             action = "attack";
@@ -142,9 +140,9 @@ public class Territory {
                             + " Please try again.\n");
                 }
                 else {
-                    b = false;
+                    loop = false;
                 }
-            } while (b);
+            } while (loop);
         }
         
         return dice;
