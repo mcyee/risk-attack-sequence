@@ -10,6 +10,7 @@ package com.skysketches.RiskAttackSequence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class GameState {
 
@@ -28,7 +29,7 @@ public class GameState {
 		}
 	}
 
-	private List<Player> activePlayers;  // Players still in the game
+//	private List<Player> activePlayers;  // Players still in the game
 	private int[] continentBonus; // bonus from occupying continents, index is given continent
 	private List<List<Territory>> continents; // Territories in each continent
 	private List<Player> players; // Players in the game
@@ -36,7 +37,7 @@ public class GameState {
 
 	//--CONSTRUCTORS------------------------------------------------------------
 	public GameState(List<Player> ap, int[] cb, List<List<Territory>> c, List<Player> p) {
-		this.activePlayers = ap;
+//		this.activePlayers = ap;
 		this.continentBonus = cb;
 		this.continents = c;
 		this.players = p;
@@ -420,8 +421,28 @@ public class GameState {
 	public void init() {
 		// Initialise Territories
 		initContinents();
-		
-		
+
+		// read in number of Players
+		try (Scanner scan = new Scanner(System.in)) {
+			System.out.println("How many players are there?");
+			int numPlayers = 0;
+			Boolean valid = false;
+			while (!valid) {
+				numPlayers = Integer.parseInt(scan.next());
+				if (1 < numPlayers && numPlayers < 6) {
+					valid = true;
+				}
+				else {
+					System.out.println("Please enter a valid number of players (2-6).");
+				}
+			}
+			
+			System.out.println("What are your names?");
+			for (int i = 0; i < numPlayers; i++) {
+				String name = scan.nextLine();
+				this.players.add(new Player(name));
+			}
+		}
 		//TODO write body
 	}
 	
@@ -443,9 +464,9 @@ public class GameState {
 	/**
 	 * getActivePlayers() returns the list of players still in the game
 	 */
-	public List<Player> getActivePlayers() {
-		return this.activePlayers;
-	}
+//	public List<Player> getActivePlayers() {
+//		return this.activePlayers;
+//	}
 
 	/**
 	 * getContinentBonus(c) returns the bonus awarded for occupying `c`
@@ -491,9 +512,9 @@ public class GameState {
 	/**
 	 * addActivePlayer(p) adds p to list of active Players
 	 */
-	public void addActivePlayer(Player p) {
-		this.activePlayers.add(p);
-	}
+//	public void addActivePlayer(Player p) {
+//		this.activePlayers.add(p);
+//	}
 
 	/**
 	 * addPlayer(p) adds p to list of Players
@@ -505,9 +526,9 @@ public class GameState {
 	/**
 	 * removeActivePlayer(p) removes p from list of active Players
 	 */
-	public void removeActivePlayer(Player p) {
-		this.activePlayers.remove(p);
-	}
+//	public void removeActivePlayer(Player p) {
+//		this.activePlayers.remove(p);
+//	}
 
 	/**
 	 * removePlayer(p) removes p from list of Players

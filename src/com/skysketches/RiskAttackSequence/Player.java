@@ -13,17 +13,19 @@ import java.util.List;
 public class Player {
 	//--VARIABLES---------------------------------------------------------------
 
-	private ArrayList<Card> cards; // Cards held
 	private String name; // name of Player
+	private Boolean active; // true if still in-game
+	private List<Card> cards; // Cards held
 	private int occTerritories; // number of Territories occupied
 
 
 	//--CONSTRUCTORS-----------------------------------------------------------
 
-	public Player(ArrayList<Card> c, String n, int o) {
-		this.cards = c;
+	public Player(String n) {
 		this.name = n;
-		this.occTerritories = o;
+		this.active = true;
+		this.cards = new ArrayList<Card>();
+		this.occTerritories = 0;
 	}
 
 
@@ -57,6 +59,13 @@ public class Player {
 	 */
 	public Boolean isEliminated() {
 		return this.occTerritories <= 0;
+	}
+	
+	/**
+	 * isActive() returns true if this Player is still in-game
+	 */
+	public Boolean isActive() {
+		return this.active;
 	}
 
 
@@ -93,5 +102,11 @@ public class Player {
 	public void removeTerritory() {
 		this.occTerritories--;
 	}
-
+	
+	/**
+	 * remove() removes Player from the game
+	 */
+	public void remove() {
+		this.active = false;
+	}
 }
