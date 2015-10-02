@@ -22,10 +22,18 @@ public class Territory {
 
 	//--CONSTRUCTORS------------------------------------------------------------
 
+	// no Player, 0 armies
+	public Territory(List<String> t, String n) {
+		this.name = n;
+		this.adjacent = t;
+		this.armies = 0;
+		this.occPlayer = "";
+	}
+	
 	public Territory(List<String> t, int a, String n, String o) {
+		this.name = n;
 		this.adjacent = t;
 		this.armies = a;
-		this.name = n;
 		this.occPlayer = o;
 	}
 
