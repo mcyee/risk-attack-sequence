@@ -9,7 +9,6 @@ package com.skysketches.RiskAttackSequence;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,13 +16,13 @@ public class Territory {
 	//--VARIABLES---------------------------------------------------------------
 
 	private final String name; // name of this Territory
-	private final ArrayList<String> adjacent; // adjacent Territories
+	private final List<String> adjacent; // adjacent Territories
 	private int armies; // number of occupying armies
 	private String occPlayer; // currently occupying Player
 
 	//--CONSTRUCTORS------------------------------------------------------------
 
-	public Territory(ArrayList<String> t, int a, String n, String o) {
+	public Territory(List<String> t, int a, String n, String o) {
 		this.adjacent = t;
 		this.armies = a;
 		this.name = n;
