@@ -33,6 +33,7 @@ public class GameState {
 	private int[] continentBonus; // bonus from occupying continents, index is given continent
 	private List<List<Territory>> continents; // Territories in each continent
 	private List<Player> players; // Players in the game
+	private int turn; // determines who's turn it is
 
 
 	//--CONSTRUCTORS------------------------------------------------------------
@@ -41,6 +42,7 @@ public class GameState {
 		this.continentBonus = cb;
 		this.continents = c;
 		this.players = p;
+		this.turn = 0;
 	}
 
 
@@ -437,11 +439,24 @@ public class GameState {
 				}
 			}
 			
+			// read in Player names
 			System.out.println("What are your names?");
 			for (int i = 0; i < numPlayers; i++) {
 				String name = scan.nextLine();
 				this.players.add(new Player(name));
 			}
+			
+			while (this.players.get(this.turn).isEliminated()) {
+				if (this.turn >= this.players.size()) {
+					this.turn = 0;
+				}
+				else {
+					this.turn++;
+				}
+			}
+			
+			System.out.println("It is " + this.players.get(this.turn).getName()
+					+ "'s turn.");
 		}
 		//TODO write body
 	}
