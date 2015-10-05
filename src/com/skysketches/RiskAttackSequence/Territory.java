@@ -72,12 +72,14 @@ public class Territory {
 	//-setters--
 
 	/**
-	 * addArmies(n) adds `n` more occupying armies to the Territory
-	 * PRE: n >= 0
+	 * addArmies(n) adds `n` more occupying armies to the Territory, returns
+	 * false if invalid number of armies
 	 */
-	public void addArmies(int n) {
-		// TODO create guard for n
+	public Boolean addArmies(int n) {
+		if (n < 1) return false;
+		
 		this.armies += n;
+		return true;
 	}
 
 	/**
@@ -86,7 +88,10 @@ public class Territory {
 	 * PRE: `max` == 2 or `max` == 3, `armies` > 0
 	 */
 	private static Boolean isValidDice(int n, int max, int armies) {
-		// TODO write guard for args
+		// TODO throw error?
+		if (max != 2 && max != 3) return false;
+		if (armies < 1) return false;
+		
 		return ((n > 0) && (n <= max) && (n < armies));
 	}
 
@@ -214,22 +219,22 @@ public class Territory {
 
 	/**
 	 * changeOccPlayer(p) changes the occupying Player of the Territory to `p`
-	 * PRE: `p` is name of Player in `activePlayers`
 	 */
 	public void changeOccPlayer(String p) {
-		// TODO write guard for arg
 		this.occPlayer = p;
 	}
 
 
 	/**
 	 * removeArmies() decreases the number of armies occupying the Territory
-	 * by `n`
-	 * PRE: `armies` > 0
+	 * by `n`, returns false if invalid number of armies
 	 */
-	public void removeArmies(int n) {
-		// TODO write guard
+	public Boolean removeArmies(int n) {
+		if (armies < 1) return false;
+		if (armies > this.armies) return false;
+		
 		this.armies -= n;
+		return true;
 	}
 
 }

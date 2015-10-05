@@ -446,6 +446,8 @@ public class GameState {
 				this.players.add(new Player(name));
 			}
 			
+			//TODO shuffle Player turn order
+			
 			while (this.players.get(this.turn).isEliminated()) {
 				if (this.turn >= this.players.size()) {
 					this.turn = 0;
