@@ -418,17 +418,15 @@ public class GameState {
 	}
 	
 	/**
-	 * init() initialises the game by setting up the Territories and Players
+	 * initPlayers() initialises the list of Players
 	 */
-	public void init() {
-		// Initialise Territories
-		initContinents();
-
+	private void initPlayers() {
 		// read in number of Players
 		try (Scanner scan = new Scanner(System.in)) {
 			System.out.println("How many players are there?");
 			int numPlayers = 0;
 			Boolean valid = false;
+			// ensure valid input
 			while (!valid) {
 				numPlayers = Integer.parseInt(scan.next());
 				if (1 < numPlayers && numPlayers < 6) {
@@ -445,22 +443,34 @@ public class GameState {
 				String name = scan.nextLine();
 				this.players.add(new Player(name));
 			}
-			
-			//TODO shuffle Player turn order
-			
-			while (this.players.get(this.turn).isEliminated()) {
-				if (this.turn >= this.players.size()) {
-					this.turn = 0;
-				}
-				else {
-					this.turn++;
-				}
-			}
-			
-			System.out.println("It is " + this.players.get(this.turn).getName()
-					+ "'s turn.");
 		}
+	}
+	
+	/**
+	 * init() initialises the game by setting up the Territories and Players
+	 */
+	public void init() {
+		// Initialise Territories
+		initContinents();
+		initPlayers();
+			
+		//TODO shuffle Player turn order
+		
+		while (this.players.get(this.turn).isEliminated()) {
+			if (this.turn >= this.players.size()) {
+				this.turn = 0;
+			}
+			else {
+				this.turn++;
+			}
+		}
+		
+		System.out.println("It is " + this.players.get(this.turn).getName()
+				+ "'s turn.");
+		
 		//TODO write body
+		// Prompt attack or pass
+		// init attack
 	}
 	
 	//--getters--
