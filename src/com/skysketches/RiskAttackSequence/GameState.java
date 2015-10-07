@@ -471,6 +471,8 @@ public class GameState {
 		//TODO write body
 		// Prompt attack or pass
 		// init attack
+		// prompt Territory to attack from
+		// prompt Territory to attack
 	}
 	
 	//--getters--
@@ -487,13 +489,6 @@ public class GameState {
 
 		return players.get(0);
 	}
-
-	/**
-	 * getActivePlayers() returns the list of players still in the game
-	 */
-//	public List<Player> getActivePlayers() {
-//		return this.activePlayers;
-//	}
 
 	/**
 	 * getContinentBonus(c) returns the bonus awarded for occupying `c`
