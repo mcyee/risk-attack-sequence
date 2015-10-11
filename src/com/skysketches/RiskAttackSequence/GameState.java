@@ -428,7 +428,7 @@ public class GameState {
 			Boolean valid = false;
 			// ensure valid input
 			while (!valid) {
-				numPlayers = Integer.parseInt(scan.next());
+				numPlayers = scan.nextInt();
 				if (1 < numPlayers && numPlayers < 6) {
 					valid = true;
 				}
@@ -465,14 +465,37 @@ public class GameState {
 			}
 		}
 		
-		System.out.println("It is " + this.players.get(this.turn).getName()
-				+ "'s turn.");
+		Player curPlayer = this.players.get(this.turn);
 		
-		//TODO write body
+		System.out.println("It is " + curPlayer.getName() + "'s turn.");
+		
 		// Prompt attack or pass
+		System.out.println(curPlayer.getName() + ":");
+		System.out.println("1. Attack");
+		System.out.println("2. Pass");
+		
+		try (Scanner scan = new Scanner(System.in)) {
+			System.out.println("1. Attack");
+			System.out.println("2. Pass");
+			
+			int move = 0;
+			Boolean valid = false;
+			// ensure valid input
+			while (!valid) {
+				move = scan.nextInt();
+				if (move == 1 || move == 2) {
+					valid = true;
+				}
+				else {
+					System.out.println("Please enter a valid number (1 or 2).");
+				}
+			}
+		}
+		
 		// init attack
 		// prompt Territory to attack from
 		// prompt Territory to attack
+		//TODO write body
 	}
 	
 	//--getters--
