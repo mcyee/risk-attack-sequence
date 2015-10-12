@@ -494,7 +494,25 @@ public class GameState {
 		
 		// init attack
 		// prompt Territory to attack from
+		System.out.println("Which territory do you want to attack from?");
+		
+		//TODO how to tell which territory is which?
+		int terCount = 1;
+		for (List<Territory> c : continents) {
+			for (Territory t : c) {
+				if (t.getOccPlayer().equals(curPlayer.getName())) {
+					System.out.println(terCount + ". " + t.getName());
+				}
+			}
+		}
+		//TODO accept user input -- which territory
+		Territory attacking = ; // input
+		
 		// prompt Territory to attack
+		System.out.println("Which territory do you want to attack?");
+		for (String n : attacking.getAdjacent()) {
+			System.out.println(count + ". " + n);
+		}
 		//TODO write body
 	}
 	
